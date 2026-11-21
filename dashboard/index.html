@@ -3,12 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Token Radar: pre-token protocols ranked by implied value</title>
+<title>Token Launch Radar — pre-token protocols, ranked by implied value</title>
 <link rel="stylesheet" href="app.css">
 </head>
 <body>
-<a class="skip" href="#board">Skip to the board</a>
-<main id="board" tabindex="-1" aria-busy="true"></main>
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"><span></span></div>
+      <div>
+        <h1>Token Launch Radar</h1>
+        <p class="tagline">Every protocol that records no token yet, priced by the market its peers already made — and a farm plan for each.</p>
+      </div>
+    </div>
+    <div class="asof" id="asof"></div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <p class="model-line" id="model-line"></p>
+</header>
+
+<main>
+  <section class="controls" aria-label="Filters">
+    <label class="ctl grow">Search
+      <input type="search" id="q" placeholder="protocol, category, chain…" autocomplete="off">
+    </label>
+    <label class="ctl">Category
+      <select id="cat"><option value="">All categories</option></select>
+    </label>
+    <label class="ctl">Chain
+      <select id="chain"><option value="">All chains</option></select>
+    </label>
+    <label class="ctl chk"><input type="checkbox" id="watchonly"> Watchlist only</label>
+    <label class="ctl chk"><input type="checkbox" id="hideshadow"> Hide shadow</label>
+    <span class="count" id="count"></span>
+  </section>
+
+  <section class="board-wrap">
+    <table class="board" id="board">
+      <thead>
+        <tr>
+          <th data-key="rank" class="num sortable">Rank</th>
+          <th data-key="name" class="sortable">Protocol</th>
+          <th data-key="tvl_usd" class="num sortable">TVL</th>
+          <th data-key="change_7d" class="num sortable">7d change</th>
+          <th data-key="age_days" class="num sortable">Age</th>
+          <th data-key="implied_value_usd" class="num sortable">Implied value</th>
+          <th data-key="ratio" class="num sortable">Value / TVL</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+
+  <section class="detail" id="detail" hidden>
+    <button class="close" id="close" type="button">Close ✕</button>
+    <div id="detail-body"></div>
+  </section>
+
+  <footer>
+    <p>Implied value is this radar's own model claim — TVL priced at the protocol's category multiple, adjusted for
+    seven-day momentum, time survived with no token, and chain breadth, with a 0.35 shadow discount on wrapped,
+    staked and bridged claims. It is not a prediction that a token will be issued. A protocol "records no token"
+    when its record carries neither a CoinGecko id nor a symbol.</p>
+  </footer>
+</main>
+
 <script src="../data.js"></script>
 <script src="app.js"></script>
 </body>
