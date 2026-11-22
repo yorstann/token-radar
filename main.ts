@@ -1,7 +1,8 @@
 // main.ts — the token launch radar's entrypoint (Node 22, standard library only).
 //
 // Reads the sealed snapshot, scores every protocol that records no token with the model in
-// lib/model.ts, and writes the run's artifacts to the output directory:
+// lib/model.ts (radar-peer-3: confidence-weighted peer multiples, damped category-relative
+// momentum, log-curve maturity, breadth and ecosystem depth), and writes the run's artifacts:
 //
 //   board.json    the ranked board: 342 pre-token protocols, best implied value first
 //   data.js       the dashboard's dataset, written beside the page it feeds

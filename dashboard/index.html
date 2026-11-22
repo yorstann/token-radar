@@ -23,6 +23,11 @@
 </header>
 
 <main>
+  <section class="topstrip" aria-label="Top ten by implied value">
+    <div class="topstrip-head"><h2>Top 10 on the sweep</h2><span>ranked by implied value — click a card for its breakdown</span></div>
+    <div class="topcards" id="topcards"></div>
+  </section>
+
   <section class="controls" aria-label="Filters">
     <label class="ctl grow">Search
       <input type="search" id="q" placeholder="protocol, category, chain…" autocomplete="off">
@@ -49,6 +54,7 @@
           <th data-key="age_days" class="num sortable">Age</th>
           <th data-key="implied_value_usd" class="num sortable">Implied value</th>
           <th data-key="ratio" class="num sortable">Value / TVL</th>
+          <th data-key="signal_score" class="num sortable">Signal</th>
         </tr>
       </thead>
       <tbody id="rows"></tbody>
@@ -61,10 +67,12 @@
   </section>
 
   <footer>
-    <p>Implied value is this radar's own model claim — TVL priced at the protocol's category multiple, adjusted for
-    seven-day momentum, time survived with no token, and chain breadth, with a 0.35 shadow discount on wrapped,
-    staked and bridged claims. It is not a prediction that a token will be issued. A protocol "records no token"
-    when its record carries neither a CoinGecko id nor a symbol.</p>
+    <p>Implied value is this radar's own model claim — TVL priced at a confidence-weighted category multiple,
+    adjusted for damped seven-day momentum (read against its category's median and weighted by the size of the
+    TVL base), time survived with no token, chain breadth and ecosystem depth, with a 0.35 shadow discount on
+    wrapped, staked and bridged claims. The Signal score is context only — where a row sits inside this board's
+    own distribution — and never moves a rank. It is not a prediction that a token will be issued. A protocol
+    "records no token" when its record carries neither a CoinGecko id nor a symbol.</p>
   </footer>
 </main>
 
